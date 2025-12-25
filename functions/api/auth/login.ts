@@ -13,7 +13,7 @@ async function sha256Hex(s: string) {
   return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
+export const onRequest = async ({ request, env }: { request: Request; env: Env }) => {
   const { email, password } = await request.json();
 
   // Users!A1:H => başlık + satırlar
